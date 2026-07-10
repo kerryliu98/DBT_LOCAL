@@ -1,0 +1,5 @@
+dbt-core==1.11.12
+dbt-duckdb==1.10.1
+shandy-sqlfmt==0.30.0
+black==26.5.1
+# Transitive dependencies are omitted for simplicity. If you prefer a full freeze, you can run: pip freeze > requirements.txt

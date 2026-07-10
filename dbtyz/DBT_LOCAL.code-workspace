@@ -1,0 +1,26 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"python-envs.defaultEnvManager": "ms-python.python:system",
+		"workbench.editorAssociations": {
+			"*.copilotmd": "vscode.markdown.preview.editor",
+			"*.parquet": "duckdb.dataFileViewer",
+			"*.csv": "duckdb.dataFileViewer",
+			"*.tsv": "duckdb.dataFileViewer",
+			"*.xlsx": "duckdb.dataFileViewer"
+		},
+		"sqltools.connections": [
+			{
+				"previewLimit": 50,
+				"driver": "DuckDB",
+				"name": "duckdb_dbt",
+				"database": "${workspaceFolder:DBT_LOCAL}/dbtyz/annalytics.duckdb"
+			}
+		],
+		"sqltools.useNodeRuntime": true
+	}
+}

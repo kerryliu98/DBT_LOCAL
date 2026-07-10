@@ -1,0 +1,23 @@
+1: 
+open folder in vscode / antigravity, then cd dbtyz
+2: 
+..\.venv\Scripts\Activate.ps1
+3: 
+dbt deps
+dbt build
+
+==================================================
+HOW TO SETUP ON A NEW PC:
+==================================================
+1. Clone this repository (ensure .venv is NOT tracked/pushed, it is in .gitignore).
+2. Open the project folder in VS Code / Antigravity.
+3. In your terminal (workspace root folder), create a new virtual environment:
+   python -m venv .venv
+4. Activate the virtual environment in PowerShell:
+   .venv\Scripts\Activate.ps1
+5. Install python dependencies:
+   pip install -r requirements.txt
+6. Run DBT as usual:
+   cd dbtyz
+   dbt deps
+   dbt build

@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: my_first_dbt_model
+    description: "A starter dbt model"
+    columns:
+      - name: id
+        description: "The primary key for this table test test"
+        data_tests:
+          - unique
+          - not_null
+          - accepted_values:
+              values:
+                - "1"
+
+  - name: my_second_dbt_model
+    description: "A starter dbt model"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        data_tests:
+          - unique
+          - not_null
+
+unit_tests:
+  - name: my_first_dbt_model_returns_only_id_1
+    model: my_first_dbt_model
+    given: []
+    expect:
+      rows:
+        - id: 1
+
+  - name: my_second_dbt_model_returns_only_id_1
+    model: my_second_dbt_model
+    given:
+      - input: ref('my_first_dbt_model')
+        rows:
+          - id: 1
+          - id: 2
+          - id: null
+    expect:
+      rows:
+        - id: 1

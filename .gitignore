@@ -1,0 +1,14 @@
+# Virtual Environment
+.venv/
+
+# VS Code settings
+.vscode/
+
+# dbt artifacts and logs
+**/target/
+**/dbt_packages/
+**/logs/
+
+# Local databases
+*.duckdb
+*.db
