@@ -1,15 +1,14 @@
-Welcome to your new dbt project!
+# DBT Project: `dbtyz`
 
-### Using the starter project
+DuckDB-powered local dbt modeling project.
 
-Try running the following commands:
-- dbt run
-- dbt test
+## Quick Commands
+```powershell
+# Activate environment (from dbtyz folder)
+..\.venv\Scripts\Activate.ps1
 
+# Run dbt build
+dbt build
+```
 
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [chat](https://community.getdbt.com/) on Slack for live discussions and support
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+For full documentation and setup instructions, see the root [README.md](../README.md) or [HOW TO RUN.TXT](../HOW%20TO%20RUN.TXT).
