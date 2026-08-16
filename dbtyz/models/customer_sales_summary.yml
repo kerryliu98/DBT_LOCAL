@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: customer_sales_summary
+    description: "汇总不同客户分群的订单总量与销售额"
+    columns:
+      - name: customer_segment
+        description: "客户分群类别"
+        data_tests:
+          - not_null
+          - unique
+      - name: total_orders
+        description: "该分群下的订单总数"
+      - name: total_sales
+        description: "该分群下的销售总额"
+      - name: vip_level
+        description: "VIP等级分类 (Tier 1 >= 1000, 否则 Tier 2)"
+
+unit_tests:
+  - name: test_customer_sales_summary_tier1_logic
+    description: "验证累计销售额 >= 1000 时，是否正确计算 total_orders、total_sales 并判定为 Tier 1"
+    model: customer_sales_summary
+    given:
+      - input: ref('sample_orders')
+        rows:
+          - { order_id: 1, customer_segment: 'Enterprise', sales_amount: 600.0 }
+          - { order_id: 2, customer_segment: 'Enterprise', sales_amount: 500.0 }
+    expect:
+      rows:
+        - { customer_segment: 'Enterprise', total_orders: 2, total_sales: 1100.0, vip_level: 'Tier 1' }
+
+  - name: test_customer_sales_summary_tier2_logic
+    description: "验证累计销售额 < 1000 时，是否判定为 Tier 2"
+    model: customer_sales_summary
+    given:
+      - input: ref('sample_orders')
+        rows:
+          - { order_id: 3, customer_segment: 'SMB', sales_amount: 300.0 }
+          - { order_id: 4, customer_segment: 'SMB', sales_amount: 250.0 }
+    expect:
+      rows:
+        - { customer_segment: 'SMB', total_orders: 2, total_sales: 550.0, vip_level: 'Tier 2' }
