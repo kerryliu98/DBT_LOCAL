@@ -3,7 +3,7 @@ DBT LOCAL PROJECT - QUICK RUN GUIDE
 ==================================================
 
 1. 日常快速运行 (Daily Run):
-   cd dbtyz
+   cd dbt_local\dbtyz
    ..\.venv\Scripts\Activate.ps1
    dbt build
 
